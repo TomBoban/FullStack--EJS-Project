@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/can.css" />
+  </head>
+  <body>
+    <%- include('partials/navbar') -%>
+    <div class="candidate_body">
+      <div class="candidate_page">
+        <h1 class="can_status">Driver Test Status</h1>
+        <% for(var i=0; i < allUsers.length; i++) { %> <% if
+        (allUsers[i].TestType == "G2" || allUsers[i].TestType == "G" ){ %>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Driver Name</th>
+              <th>Driver LicenseNumber</th>
+              <th>Test Type</th>
+              <th>Test Result</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-label="Contact ID">
+                <%= allUsers[i].user.firstName %> <%= allUsers[i].user.lastName
+                %>
+              </td>
+              <td data-label="Power"><%= allUsers[i].user.licenseNumber %></td>
+              <td data-label="Expiration"><%= allUsers[i].TestType %></td>
+
+              <% if(allUsers[i].testResult ){ %>
+              <td data-label="Value">Pass</td>
+              <% } else{ %>
+              <td data-label="Value">Fail</td>
+              <% } %>
+            </tr>
+          </tbody>
+        </table>
+        <% } %> <% } %>
+      </div>
+    </div>
+  </body>
+</html>

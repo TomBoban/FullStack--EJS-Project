@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <%- include('partials/navbar') -%>
+    <div>
+      <% if (userList != null && userList!=[]&& userList!=""){ %>
+      <section id="g_sub_container">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <h1 class="edit_sec">Edit Your Car Details here</h1>
+              <form
+                action="/update_User"
+                method="post"
+                class="d-flex row justify-content-center align-items-center"
+              >
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="exampleInputUsername">First Name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="firstName"
+                      value="<%= userList.firstName %>"
+                      readonly
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputUsername">Last Name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id=""
+                      placeholder=" Last Name"
+                      name="lastName"
+                      value="<%= userList.lastName %>"
+                      readonly
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="license">License Number</label>
+                    <input
+                      name="licenseNumber"
+                      type="tel"
+                      class="form-control"
+                      id="license"
+                      placeholder=" Enter 8-digit license no."
+                      value="<%= userList.licenseNumber %>"
+                      readonly
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputAge">Age</label>
+                    <input
+                      type="text"
+                      name="age"
+                      class="form-control"
+                      id=""
+                      placeholder=" Enter Age"
+                      value="<%= userList.age %>"
+                      readonly
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="inputBirthDate" class="form-label">Dob</label>
+                    <input
+                      type="text"
+                      name="dob"
+                      class="form-control"
+                      id="inputBirthDate"
+                      value="<%=  moment(userList.dob).format( 'MMM-DD-YYYY')  %>"
+                      readonly
+                    />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <div class="text-center car_details">
+                      <div>Car Details</div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputMake">Make</label>
+                    <input
+                      type="text"
+                      name="make"
+                      class="form-control"
+                      id=""
+                      placeholder="Make"
+                      value="<%= userList.car_details.make %>"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputModel">Model</label>
+                    <input
+                      type="text"
+                      name="model"
+                      class="form-control"
+                      id=""
+                      placeholder=" Model Number"
+                      value="<%= userList.car_details.model %>"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputYear">Year</label>
+                    <input
+                      type="text"
+                      name="year"
+                      class="form-control"
+                      id=""
+                      placeholder="Year"
+                      value="<%= userList.car_details.year %>"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="examplePlateNumber">Plate Number</label>
+                    <input
+                      type="text"
+                      name="plateNumber"
+                      class="form-control"
+                      id=""
+                      placeholder="Plate Number"
+                      value="<%= userList.car_details.plateNumber %>"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="form-group d-flex justify-content-center align-items-center"
+                >
+                  <!-- Submit button -->
+                  <button
+                    class="btn btn-danger w-100 rounded-1"
+                    name="submit"
+                    type="submit"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </form>
+              <% } %>
+            </div>
+            <% if (TestType != "G"){ %>
+            <div class="col-12">
+              <div class="form-group">
+                <!-- Calender button -->
+                <form class="dt_pick" action="/findGDate" method="post">
+                  <label for="inputBirthDate" class="form-label selectDate"
+                    >Select Driving Test Date</label
+                  >
+                  <input
+                    type="date"
+                    name="drvDate"
+                    class="form-control"
+                    id="inputBirthDate"
+                  />
+
+                  <button class="btn btn-primary w-100 rounded-1" name="submit">
+                    Search
+                  </button>
+                </form>
+                <% if (findDate.length != 0){ %>
+                <div class="selectSbt">
+                  <form class="dt_pick" action="/selectGDate" method="post">
+                    <select
+                      class="form-select form-select-lg mb-3"
+                      aria-label=".form-select-lg example"
+                      name="dateSelected"
+                    >
+                      <option selected>
+                        Available Dates for booking Driving Test
+                      </option>
+                      <% for(var i=0; i < findDate.length; i++) { %> <%
+                      if(findDate[i].isTimeSlotAvailable ){ %>
+                      <option value="<%= findDate[i].starttimeslot %>">
+                        <%= findDate[i].starttimeslot %> to <%=
+                        findDate[i].endtimeslot %>
+                      </option>
+
+                      <% } %> <% } %>
+                    </select>
+                    <button
+                      class="btn btn-danger w-100 rounded-1"
+                      name="submit"
+                      type="submit"
+                    >
+                      Submit
+                    </button>
+                  </form>
+                </div>
+                <% } %>
+              </div>
+            </div>
+            <% } else if (findResult) { %>
+              <div class="alert alert-success" role="alert">
+                <h1>You have Passed Your G exam</h1>
+              </div>
+      
+              <% } else if (!findResult) { %>
+              <div class="alert alert-danger" role="alert">
+                <h1>You have Failed Your G exam</h1>
+              </div>
+
+
+
+            <% } else{ %>
+            <div>
+              <h1>G test date has been already selected, waiting for result</h1>
+            </div>
+
+            <% } %>
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+/*   
+// Vars  
+$blue = #44acff
+$green = #4ed99c
+$red = #f14044
+$black-2 = #2b2d32 */
+
+.candidate_page {
+    width: 90%;
+    margin: 0 auto;
+
+}
+
+.candidate_body {
+    background: url(../images/bc1.jpg) no-repeat center;
+    background-size: cover;
+    height: 100vh;
+}
+
+.can_status {
+    color: #fff;
+    font-size: 4rem;
+    text-align: center;
+    font-weight: 600;
+    padding: 1rem 0 3rem 0;
+}
+
+.table {
+    width: 100%;
+    border-spacing: 0;
+    text-align: left;
+}
+
+th {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 26px;
+    padding: 18px 30px;
+}
+
+thead tr {
+    background: #0d0d0d;
+
+}
+
+
+td {
+    padding: 30px 30px 31px;
+    font-weight: 400;
+    font-size: 1rem;
+    color: black-2;
+    line-height: 26px;
+    text-transform: uppercase;
+}
+
+tbody tr:nth-child(odd) {
+    background: #ffffff;
+}
+
+tbody tr:nth-child(even) {
+    background: #f8fbfc;
+}
+
+
+
+.btn {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 25px;
+    text-transform: uppercase;
+    width: 170px;
+    text-align: center;
+    padding: 10px;
+    border-radius: 3px;
+    transition: .3s ease;
+    text-decoration: none;
+}
+
+.btn:hover {
+    color: #ffffff;
+}
+
+.btn:active {
+    color: #4ed99c;
+    border: 2px solid #4ed99c;
+}
+
+.btn:active:hover {
+    background: #4ed99c;
+}

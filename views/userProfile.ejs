@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/userProfile.css" />
+  </head>
+  <body>
+    <%- include('partials/navbar') -%> <% console.log(userInfo,"test") %>
+    <div class="userProfile">
+      <div class="container">
+        <% for(var i=0; i < userInfo.length; i++) { %>
+        <div class="title"><%= userInfo[i].user.firstName %> Profile</div>
+        <form action="/userResult" method="post">
+          <div class="user__details">
+            <div class="input__box">
+              <span class="details">Full Name</span>
+              <input
+                type="text"
+                placeholder="E.g: John Smith"
+                value="<%= userInfo[i].user.firstName %> <%= userInfo[i].user.lastName %>"
+              />
+            </div>
+            <div class="input__box">
+              <span class="details">License Number</span>
+              <input
+                type="text"
+                placeholder="johnWC98"
+                value="<%= userInfo[i].user.licenseNumber %> "
+                readonly
+              />
+            </div>
+            <div class="input__box">
+              <span class="details">Date Selected</span>
+              <input
+                type="email"
+                placeholder="johnsmith@hotmail.com"
+                value="<%= userInfo[i].dateSelected %>"
+                readonly
+              />
+            </div>
+            <div class="input__box">
+              <span class="details">User Type</span>
+              <input
+                type="tel"
+                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                placeholder="012-345-6789"
+                value="<%= userInfo[i].user.userType %> "
+                readonly
+              />
+            </div>
+            
+            <div class="input__box">
+              <span class="details">Result</span>
+              <select
+                name="result"
+                class="form-select form-select-lg mb-3"
+                aria-label=".form-select-lg example"
+              >
+                <option selected>Select Result</option>
+                <option name="result">Pass</option>
+                <option name="result">Fail</option>
+              </select>
+            </div>
+         
+          </div>
+
+          <div class="button">
+            <input type="submit" value="Submit Result" />
+          </div>
+        </form>
+        <% } %>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <%- include('partials/navbar') -%>
+    <div class="app_body">
+      <% if (msg != ""){ %>
+      <div class="msg-body">
+        <div class="msg_box"><%= msg %></div>
+      </div>
+      <% } %>
+
+      <div class="template-1">
+        <div class="form_body">
+          <div class="form_heading">
+            <h1>Enter Shift Timings</h1>
+          </div>
+          <form action="/appointment" method="post">
+            <div class="form-group">
+              <label for="datepicker" class="text-dark">Shift Date</label>
+
+              <input
+                type="text"
+                id="datepicker"
+                name="dateSelected"
+                class="form-control"
+                placeholder="Enter Shift  date"
+                required
+              />
+            </div>
+            <div class="form-group timepicker_div">
+              <label for="timepicker" class="text-dark">From</label>
+              <input
+                name="starttimeslot"
+                type="text"
+                id="timepicker"
+                class="form-control timepicker"
+                placeholder="Enter Start time"
+                required
+              />
+            </div>
+            <div class="form-group timepicker_div">
+              <label for="timepicker" class="text-dark">To</label>
+              <input
+                name="endtimeslot"
+                type="text"
+                id="timepicker"
+                class="form-control timepicker"
+                placeholder="Enter End time"
+                required
+              />
+            </div>
+            <div class="btn-body">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="/js/timepicker.js"></script>
+    <script src="/js/script.js"></script>
+  </body>
+</html>

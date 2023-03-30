@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <%- include('partials/navbar') -%>
+    <div class="examiner_body">
+      <div class="container exami">
+        <div class="exam_center">
+          <h1>Examination Report Details</h1>
+        </div>
+
+        <table
+          id="table"
+          data-toggle="table"
+          data-search="true"
+          data-filter-control="true"
+          data-show-export="true"
+          data-click-to-select="true"
+          data-toolbar="#toolbar"
+          class="table-responsive"
+        >
+          <thead>
+            <tr>
+              <th data-field="state" data-checkbox="true"></th>
+              <th
+                data-field="prenom"
+                data-filter-control="input"
+                data-sortable="true"
+              >
+                First Name
+              </th>
+              <th
+                data-field="date"
+                data-filter-control="select"
+                data-sortable="true"
+              >
+                Date
+              </th>
+              <th
+                data-field="examen"
+                data-filter-control="select"
+                data-sortable="true"
+              >
+                Examination Type
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(var i=0; i < allUsers.length; i++) { %>
+            <tr>
+              <td class="bs-checkbox">
+                <input data-index="0" name="btSelectItem" />
+              </td>
+
+              <td></td>
+              <td>
+                <a href="./userProfile/<%=allUsers[i]._id %>"
+                  ><%- allUsers[i]?.user.firstName %></a
+                >
+              </td>
+              <td><%= allUsers[i]?.dateSelected %></td>
+              <td><%= allUsers[i]?.TestType %></td>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.0/bootstrap-table.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.9.1/extensions/editable/bootstrap-table-editable.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.9.1/extensions/export/bootstrap-table-export.js"></script>
+  <script src="//rawgit.com/hhurz/tableExport.jquery.plugin/master/tableExport.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.9.1/extensions/filter-control/bootstrap-table-filter-control.js"></script>
+  <script src="/js/script.js"></script>
+</html>

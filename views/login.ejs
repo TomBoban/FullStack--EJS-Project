@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <%- include('partials/navbar') -%>
+    <div class="login_page">
+      <% if(msg =='existing user'){ %>
+      <div class="alert alert-success text-center" role="alert">
+        <h2>You are already Registered Please Enter Login Details!</h2>
+      </div>
+
+      <% }if((msg =='new user')) { %>
+      <div class="alert alert-success text-center" role="alert">
+        <h2>Registration Suceesfull! Please Enter Login Details!</h2>
+      </div>
+
+      <% }if(msg =='Welcome') { %>
+      <div class="alert alert-success text-center" role="alert">
+        <h2>Welcome! Please Enter Login Details!</h2>
+      </div>
+
+      <% } %>
+
+      <div class="wrapper">
+        <div class="text-center mt-4 name">Login Page</div>
+        <form action="/login" method="post" class="p-3 mt-3">
+          <div class="form-field d-flex align-items-center">
+            <span class="far fa-user"></span>
+            <input type="text" name="email" id="email" placeholder="Email" />
+          </div>
+          <div class="form-field d-flex align-items-center">
+            <span class="fas fa-key"></span>
+            <input
+              type="password"
+              name="password"
+              id="pwd"
+              placeholder="Password"
+            />
+          </div>
+
+          <% if(msg == "Incorrect Password") { %>
+          <div class="d-flex align-items-center">
+            <h6 style="color: red">Entered Password is Incorrect!!!</h6>
+          </div>
+          <% } %>
+          <button class="btn mt-3">Login</button>
+        </form>
+        <div class="text-center fs-6">
+          <a href="/register">Join our Community, Sign up</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

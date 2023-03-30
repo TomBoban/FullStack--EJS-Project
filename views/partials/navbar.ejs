@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Driving Page</title>
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand text_link_main h4 text-uppercase" href="/"
+          >Book Driving Test</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-end text-white"
+          id="navbarNavDropdown"
+        >
+          <ul class="navbar-nav justify-content-between h5 text-white">
+            <li class="nav-item">
+              <a class="nav-link active text_link" aria-current="page" href="/"
+                >DASHBOARD</a
+              >
+            </li>
+            <% if (userType == "Driver"){ %>
+            <li class="nav-item">
+              <a class="nav-link text_link" href="../g2_page">G2-Test</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text_link" href="../g_page">G-TEST</a>
+            </li>
+
+            <% } %> <% if (userType == "Admin"){ %>
+            <li class="nav-item">
+              <a class="nav-link text_link" href="../appointment"
+                >APPOINTMENT</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text_link" href="../candidate"
+                >CANDIDATE RESULT</a
+              >
+            </li>
+            <% } %> <% if (userType == "Examiner"){ %>
+            <li class="nav-item">
+              <a class="nav-link text_link" href="../examiner">EXAMINER</a>
+            </li>
+            <% } %> <% if (userId == null){ %>
+            <li class="nav-item">
+              <a class="nav-link text_link" href="/login">LOGIN</a>
+            </li>
+            <% } else if (userId != null && userId!=""){ %>
+            <form action="/logout" method="POST">
+              <button class="btn btn-primary btn_shape">Logout</button>
+            </form>
+            <% } %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- JavaScript Bundle with Popper -->
+  </body>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+    crossorigin="anonymous"
+  ></script>
+</html>
